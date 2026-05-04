@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+.venv/
+venv/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Environment
+.env
+.env.*
+!.env.example
+service-account.json
+service-account*.json
+firebase-service-account*.json
+credentials*.json
+client_secret*.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+.npmrc
+.yarnrc
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Test / type checking
+.pytest_cache/
+.mypy_cache/
+
+# Project-specific
+.firecrawl/
+
+# Temp
+tmp/
+uploads/
+
+# Vendored JS (downloaded at Docker build time)
+vendor/
+
+# VPS-specific local overrides (never tracked)
+.env
+docker-compose.override.yml
+
+# Agent/IDE runtime state
+.cursor/
+.superpowers/
+.playwright-mcp/
+.claude/
+
+# External tool state
+entities.json
+mempalace.yaml
+openmemory.md
+
+# Ad-hoc captures
+canvas_logged_in.png
+*.zip
+
+# Embedded repos (manage separately)
+johnnywhisper/
+
+# Clean seed repo exclusions
+*.md
+docs/
+doc/
+knowledge-base/
+knowledge_base/
+*knowledge-base*/
+tests/
+test/
+__tests__/
+test_*.py
+*_test.py
+*.test.*
+*.spec.*
+!README.md
+!tests/
+!tests/**
+tests/**/__pycache__/
+tests/**/*.py[cod]
+
+# Screenshots / demo recordings — not part of source
+screenshots/

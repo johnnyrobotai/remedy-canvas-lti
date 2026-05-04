@@ -1,0 +1,570 @@
+{
+  "metadata": {
+    "vpat_edition": "VPAT 2.5Rev WCAG",
+    "wcag_version": "2.2",
+    "release_date": "2025-04-24",
+    "source": "ITI (Information Technology Industry Council)",
+    "url": "https://www.itic.org/policy/accessibility"
+  },
+  "categories": [
+    {
+      "id": "1.1",
+      "name": "Text Alternatives",
+      "description": "Provide text alternatives for any non-text content"
+    },
+    {
+      "id": "1.2",
+      "name": "Time-based Media",
+      "description": "Provide alternatives for time-based media"
+    },
+    {
+      "id": "1.3",
+      "name": "Adaptable",
+      "description": "Create content that can be presented in different ways"
+    },
+    {
+      "id": "1.4",
+      "name": "Distinguishable",
+      "description": "Make it easier for users to see and hear content"
+    },
+    {
+      "id": "2.1",
+      "name": "Keyboard Accessible",
+      "description": "Make all functionality available from a keyboard"
+    },
+    {
+      "id": "2.2",
+      "name": "Enough Time",
+      "description": "Provide users enough time to read and use content"
+    },
+    {
+      "id": "2.3",
+      "name": "Seizures and Physical Reactions",
+      "description": "Do not design content in a way that is known to cause seizures"
+    },
+    {
+      "id": "2.4",
+      "name": "Navigable",
+      "description": "Provide ways to help users navigate and find content"
+    },
+    {
+      "id": "2.5",
+      "name": "Input Modalities",
+      "description": "Make it easier to use inputs other than keyboard"
+    },
+    {
+      "id": "3.1",
+      "name": "Readable",
+      "description": "Make text content readable and understandable"
+    },
+    {
+      "id": "3.2",
+      "name": "Predictable",
+      "description": "Make web pages appear and operate in predictable ways"
+    },
+    {
+      "id": "3.3",
+      "name": "Input Assistance",
+      "description": "Help users avoid and correct mistakes"
+    },
+    {
+      "id": "4.1",
+      "name": "Compatible",
+      "description": "Maximize compatibility with current and future user agents"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "1.1.1",
+      "name": "Non-text Content",
+      "description": "All non-text content that is presented to the user has a text alternative that serves the equivalent purpose",
+      "level": "A",
+      "category": "1.1",
+      "notes": "Images, icons, charts, etc. must have alt text"
+    },
+    {
+      "id": "1.2.1",
+      "name": "Audio-only and Video-only (Prerecorded)",
+      "description": "For prerecorded audio-only and prerecorded video-only media, provide alternatives",
+      "level": "A",
+      "category": "1.2",
+      "notes": "Transcripts for audio-only, alternatives for video-only"
+    },
+    {
+      "id": "1.2.2",
+      "name": "Captions (Prerecorded)",
+      "description": "Captions are provided for all prerecorded audio content in synchronized media",
+      "level": "A",
+      "category": "1.2",
+      "notes": "Video content must have captions"
+    },
+    {
+      "id": "1.2.3",
+      "name": "Audio Description or Media Alternative (Prerecorded)",
+      "description": "An alternative for time-based media or audio description is provided for prerecorded synchronized media",
+      "level": "A",
+      "category": "1.2",
+      "notes": "Visual content in videos needs audio description"
+    },
+    {
+      "id": "1.3.1",
+      "name": "Info and Relationships",
+      "description": "Information, structure, and relationships conveyed through presentation can be programmatically determined",
+      "level": "A",
+      "category": "1.3",
+      "notes": "Headings, lists, tables must use proper semantic markup"
+    },
+    {
+      "id": "1.3.2",
+      "name": "Meaningful Sequence",
+      "description": "When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined",
+      "level": "A",
+      "category": "1.3",
+      "notes": "Content order must be logical in DOM"
+    },
+    {
+      "id": "1.3.3",
+      "name": "Sensory Characteristics",
+      "description": "Instructions provided for understanding and operating content do not rely solely on sensory characteristics",
+      "level": "A",
+      "category": "1.3",
+      "notes": "Don't rely on color, shape, size, location alone"
+    },
+    {
+      "id": "1.4.1",
+      "name": "Use of Color",
+      "description": "Color is not used as the only visual means of conveying information",
+      "level": "A",
+      "category": "1.4",
+      "notes": "Don't rely on color alone to convey meaning"
+    },
+    {
+      "id": "1.4.2",
+      "name": "Audio Control",
+      "description": "If any audio on a web page plays automatically for more than 3 seconds, a mechanism is available to pause or stop it",
+      "level": "A",
+      "category": "1.4",
+      "notes": "Autoplay audio needs controls"
+    },
+    {
+      "id": "2.1.1",
+      "name": "Keyboard",
+      "description": "All functionality of the content is operable through a keyboard interface",
+      "level": "A",
+      "category": "2.1",
+      "notes": "Everything must work with keyboard only"
+    },
+    {
+      "id": "2.1.2",
+      "name": "No Keyboard Trap",
+      "description": "If keyboard focus can be moved to a component using a keyboard interface, then focus can be moved away from that component",
+      "level": "A",
+      "category": "2.1",
+      "notes": "Users must be able to tab away from all elements"
+    },
+    {
+      "id": "2.2.1",
+      "name": "Timing Adjustable",
+      "description": "Users are warned about time limits and can turn off, adjust, or extend them",
+      "level": "A",
+      "category": "2.2",
+      "notes": "Time limits need user control"
+    },
+    {
+      "id": "2.2.2",
+      "name": "Pause, Stop, Hide",
+      "description": "For moving, blinking, scrolling, or auto-updating information, users can pause, stop, or hide it",
+      "level": "A",
+      "category": "2.2",
+      "notes": "Animations need pause/stop controls"
+    },
+    {
+      "id": "2.3.1",
+      "name": "Three Flashes or Below Threshold",
+      "description": "Web pages do not contain anything that flashes more than three times in any one second period",
+      "level": "A",
+      "category": "2.3",
+      "notes": "Flashing content can trigger seizures"
+    },
+    {
+      "id": "2.4.1",
+      "name": "Bypass Blocks",
+      "description": "A mechanism is available to bypass blocks of content that are repeated on multiple Web pages",
+      "level": "A",
+      "category": "2.4",
+      "notes": "Skip links to main content"
+    },
+    {
+      "id": "2.4.2",
+      "name": "Page Titled",
+      "description": "Web pages have titles that describe topic or purpose",
+      "level": "A",
+      "category": "2.4",
+      "notes": "Every page needs a descriptive title"
+    },
+    {
+      "id": "2.4.3",
+      "name": "Focus Order",
+      "description": "If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability",
+      "level": "A",
+      "category": "2.4",
+      "notes": "Tab order must be logical"
+    },
+    {
+      "id": "2.4.4",
+      "name": "Link Purpose (In Context)",
+      "description": "The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context",
+      "level": "A",
+      "category": "2.4",
+      "notes": "Links need descriptive text"
+    },
+    {
+      "id": "2.5.1",
+      "name": "Pointer Gestures",
+      "description": "All functionality using multipoint or path-based gestures can be operated with a single pointer without a path-based gesture",
+      "level": "A",
+      "category": "2.5",
+      "notes": "No required swipe gestures"
+    },
+    {
+      "id": "2.5.2",
+      "name": "Pointer Cancellation",
+      "description": "For functionality that can be operated using a single pointer, at least one of the following is true: no down-event, abort/undo, up reversal, or essential",
+      "level": "A",
+      "category": "2.5",
+      "notes": "Don't trigger actions on mouse down"
+    },
+    {
+      "id": "2.5.3",
+      "name": "Label in Name",
+      "description": "For user interface components with labels that include text or images of text, the name contains the text that is presented visually",
+      "level": "A",
+      "category": "2.5",
+      "notes": "Accessible name must include visible label"
+    },
+    {
+      "id": "2.5.4",
+      "name": "Motion Actuation",
+      "description": "Functionality that can be operated by device motion can also be operated by user interface components",
+      "level": "A",
+      "category": "2.5",
+      "notes": "Motion gestures need alternative UI"
+    },
+    {
+      "id": "3.1.1",
+      "name": "Language of Page",
+      "description": "The default human language of each Web page can be programmatically determined",
+      "level": "A",
+      "category": "3.1",
+      "notes": "Page needs lang attribute"
+    },
+    {
+      "id": "3.2.1",
+      "name": "On Focus",
+      "description": "When any component receives focus, it does not initiate a change of context",
+      "level": "A",
+      "category": "3.2",
+      "notes": "Focus shouldn't trigger page changes"
+    },
+    {
+      "id": "3.2.2",
+      "name": "On Input",
+      "description": "Changing the setting of any user interface component does not automatically cause a change of context",
+      "level": "A",
+      "category": "3.2",
+      "notes": "Form changes shouldn't auto-submit"
+    },
+    {
+      "id": "3.3.1",
+      "name": "Error Identification",
+      "description": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text",
+      "level": "A",
+      "category": "3.3",
+      "notes": "Form errors need clear identification"
+    },
+    {
+      "id": "3.3.2",
+      "name": "Labels or Instructions",
+      "description": "Labels or instructions are provided when content requires user input",
+      "level": "A",
+      "category": "3.3",
+      "notes": "Form fields need labels"
+    },
+    {
+      "id": "4.1.1",
+      "name": "Parsing",
+      "description": "In content implemented using markup languages, elements have complete start and end tags, are nested according to their specifications",
+      "level": "A",
+      "category": "4.1",
+      "notes": "Valid HTML markup"
+    },
+    {
+      "id": "4.1.2",
+      "name": "Name, Role, Value",
+      "description": "For all user interface components, the name and role can be programmatically determined",
+      "level": "A",
+      "category": "4.1",
+      "notes": "Custom components need ARIA"
+    },
+    {
+      "id": "4.1.3",
+      "name": "Status Messages",
+      "description": "In content implemented using markup languages, status messages can be programmatically determined through role or properties",
+      "level": "A",
+      "category": "4.1",
+      "notes": "Status updates need ARIA live regions"
+    },
+    {
+      "id": "1.2.4",
+      "name": "Captions (Live)",
+      "description": "Captions are provided for all live audio content in synchronized media",
+      "level": "AA",
+      "category": "1.2",
+      "notes": "Live video needs captions"
+    },
+    {
+      "id": "1.2.5",
+      "name": "Audio Description (Prerecorded)",
+      "description": "Audio description is provided for all prerecorded video content in synchronized media",
+      "level": "AA",
+      "category": "1.2",
+      "notes": "Pre-recorded video needs audio description"
+    },
+    {
+      "id": "1.4.3",
+      "name": "Contrast (Minimum)",
+      "description": "The visual presentation of text and images of text has a contrast ratio of at least 4.5:1",
+      "level": "AA",
+      "category": "1.4",
+      "notes": "Text must have sufficient contrast"
+    },
+    {
+      "id": "1.4.4",
+      "name": "Resize Text",
+      "description": "Text can be resized without assistive technology up to 200 percent without loss of content or functionality",
+      "level": "AA",
+      "category": "1.4",
+      "notes": "Text must zoom to 200%"
+    },
+    {
+      "id": "1.4.5",
+      "name": "Images of Text",
+      "description": "If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text",
+      "level": "AA",
+      "category": "1.4",
+      "notes": "Use real text, not images of text"
+    },
+    {
+      "id": "1.4.10",
+      "name": "Reflow",
+      "description": "Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions",
+      "level": "AA",
+      "category": "1.4",
+      "notes": "Content must reflow at 320px width"
+    },
+    {
+      "id": "1.4.11",
+      "name": "Non-text Contrast",
+      "description": "The visual presentation of user interface components and graphical objects have a contrast ratio of at least 3:1 against adjacent color(s)",
+      "level": "AA",
+      "category": "1.4",
+      "notes": "UI components need 3:1 contrast"
+    },
+    {
+      "id": "1.4.12",
+      "name": "Text Spacing",
+      "description": "No loss of content or functionality occurs by setting all of the following: line height, letter spacing, word spacing, and paragraph spacing",
+      "level": "AA",
+      "category": "1.4",
+      "notes": "Text must handle custom spacing"
+    },
+    {
+      "id": "1.4.13",
+      "name": "Content on Hover or Focus",
+      "description": "Where receiving and then removing pointer hover or keyboard focus triggers additional content, the content is dismissible, hoverable, and persistent",
+      "level": "AA",
+      "category": "1.4",
+      "notes": "Tooltips must be dismissible and hoverable"
+    },
+    {
+      "id": "2.4.5",
+      "name": "Multiple Ways",
+      "description": "More than one way is available to locate a Web page within a set of Web pages",
+      "level": "AA",
+      "category": "2.4",
+      "notes": "Multiple navigation methods (search, sitemap, etc.)"
+    },
+    {
+      "id": "2.4.6",
+      "name": "Headings and Labels",
+      "description": "Headings and labels describe topic or purpose",
+      "level": "AA",
+      "category": "2.4",
+      "notes": "Headings must be descriptive"
+    },
+    {
+      "id": "2.4.7",
+      "name": "Focus Visible",
+      "description": "Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible",
+      "level": "AA",
+      "category": "2.4",
+      "notes": "Focus indicators must be visible"
+    },
+    {
+      "id": "2.5.5",
+      "name": "Target Size (Enhanced)",
+      "description": "The size of the target for pointer inputs is at least 44 by 44 CSS pixels",
+      "level": "AAA",
+      "category": "2.5",
+      "notes": "WCAG 2.1 AAA - larger touch targets"
+    },
+    {
+      "id": "2.5.6",
+      "name": "Concurrent Input Mechanisms",
+      "description": "Web content does not restrict use of input modalities available on a platform",
+      "level": "AAA",
+      "category": "2.5",
+      "notes": "WCAG 2.1 AAA - don't restrict input types"
+    },
+    {
+      "id": "2.4.11",
+      "name": "Focus Not Obscured (Minimum)",
+      "description": "When a UI component receives keyboard focus, the component is not entirely hidden by author-created content",
+      "level": "AA",
+      "category": "2.4",
+      "notes": "WCAG 2.2 - Focus must be visible, not hidden by sticky headers/modals"
+    },
+    {
+      "id": "2.4.12",
+      "name": "Focus Not Obscured (Enhanced)",
+      "description": "When a UI component receives keyboard focus, no part of the component is hidden by author-created content",
+      "level": "AAA",
+      "category": "2.4",
+      "notes": "WCAG 2.2 AAA - Stricter focus visibility"
+    },
+    {
+      "id": "2.4.13",
+      "name": "Focus Appearance",
+      "description": "Focus indicators have sufficient size and contrast",
+      "level": "AAA",
+      "category": "2.4",
+      "notes": "WCAG 2.2 AAA - Focus indicators must be at least 2px thick and have 3:1 contrast"
+    },
+    {
+      "id": "2.5.7",
+      "name": "Dragging Movements",
+      "description": "Functionality using dragging can be operated with a single pointer without dragging",
+      "level": "AA",
+      "category": "2.5",
+      "notes": "WCAG 2.2 - Drag operations need single-pointer alternative"
+    },
+    {
+      "id": "2.5.8",
+      "name": "Target Size (Minimum)",
+      "description": "Targets have a minimum size of 24 by 24 CSS pixels",
+      "level": "AA",
+      "category": "2.5",
+      "notes": "WCAG 2.2 AA - Minimum touch target size"
+    },
+    {
+      "id": "3.2.6",
+      "name": "Consistent Help",
+      "description": "Help mechanisms are located consistently across pages",
+      "level": "A",
+      "category": "3.2",
+      "notes": "WCAG 2.2 - Help links/forms should be in same location"
+    },
+    {
+      "id": "3.3.7",
+      "name": "Redundant Entry",
+      "description": "Information previously entered is auto-populated or available for selection",
+      "level": "A",
+      "category": "3.3",
+      "notes": "WCAG 2.2 - Don't ask for same info twice"
+    },
+    {
+      "id": "3.3.8",
+      "name": "Accessible Authentication (Minimum)",
+      "description": "Authentication does not rely on cognitive function tests",
+      "level": "AA",
+      "category": "3.3",
+      "notes": "WCAG 2.2 - No CAPTCHA without alternative"
+    },
+    {
+      "id": "3.3.9",
+      "name": "Accessible Authentication (Enhanced)",
+      "description": "Authentication can be completed without cognitive function tests and without requiring user identification",
+      "level": "AAA",
+      "category": "3.3",
+      "notes": "WCAG 2.2 AAA - Even stricter authentication"
+    }
+  ],
+  "rule_mapping": {
+    "IMG001": "1.1.1",
+    "IMG002": "1.1.1",
+    "IMG003": "1.1.1",
+    "IMG004": "1.1.1",
+    "IMG005": "1.1.1",
+    "HDG001": "1.3.1",
+    "HDG002": "1.3.1",
+    "HDG003": "1.3.1",
+    "HDG004": "1.3.1",
+    "HDG005": "1.3.1",
+    "HDG006": "1.3.1",
+    "TBL001": "1.3.1",
+    "TBL002": "1.3.1",
+    "TBL003": "1.3.1",
+    "TBL004": "1.3.1",
+    "TBL005": "1.3.1",
+    "TBL006": "1.3.1",
+    "LNK001": "2.4.4",
+    "LNK002": "2.4.4",
+    "LNK003": "2.4.4",
+    "LNK004": "2.4.4",
+    "LNK005": "2.4.4",
+    "LNK006": "2.4.4",
+    "LNK007": "1.3.1",
+    "LNK008": "1.3.1",
+    "LNK009": "1.3.1",
+    "LNK010": "2.4.4",
+    "CLR001": "1.4.3",
+    "STR001": "1.3.1",
+    "STR002": "1.3.1",
+    "STR003": "1.4.3",
+    "ARIA001": "4.1.2",
+    "LIST001": "1.3.1",
+    "MDA001": "1.2.2",
+    "MDA002": "1.4.2",
+    "MATH001": "1.3.1",
+    "TGT001": "2.5.8",
+    "FOC001": "2.4.11",
+    "HELP001": "3.2.6",
+    "FORM001": "3.3.7",
+    "FORM003": "1.3.1",
+    "FORM004": "1.3.1",
+    "FORM005": "1.3.1",
+    "FORM006": "1.3.1",
+    "FORM007": "1.3.1",
+    "FORM009": "1.3.1",
+    "AUTH001": "3.3.8",
+    "BTN001": "1.1.1",
+    "DOC001": "1.1.1",
+    "DOC002": "1.1.1",
+    "PDF001": "1.3.1",
+    "LANG001": "3.1.1",
+    "NAV001": "2.4.1",
+    "NAV002": "2.2.1",
+    "PAGE001": "2.4.2",
+    "STR004": "1.3.1",
+    "STR005": "1.4.8",
+    "EVT001": "2.1.1",
+    "EVT002": "3.2.2",
+    "IMG006": "1.1.1",
+    "IMG007": "1.1.1",
+    "IMG008": "1.1.1",
+    "MDA003": "1.2.2",
+    "MDA004": "1.2.2",
+    "MDA005": "1.2.2",
+    "MDA006": "1.2.2"
+  }
+}

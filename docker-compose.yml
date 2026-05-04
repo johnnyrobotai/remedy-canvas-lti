@@ -1,0 +1,64 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-canvas_remedy_lti}
+      POSTGRES_USER: ${POSTGRES_USER:-remedy}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-remedy} -d $${POSTGRES_DB:-canvas_remedy_lti}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # Full image: built frontend + backend served by FastAPI.
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8001:8080"
+    env_file:
+      - .env
+    environment:
+      PORT: 8080
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      AUTH_BYPASS_FOR_LOCAL: ${AUTH_BYPASS_FOR_LOCAL:-false}
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL in .env}
+      SESSION_SECRET_KEY: ${SESSION_SECRET_KEY:-compose-local-session-secret-change-before-production}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost:8001}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,0.0.0.0}
+
+  # Development: mounts backend source and runs uvicorn with reload.
+  dev:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8001:8080"
+    env_file:
+      - .env
+    environment:
+      PORT: 8080
+      ENVIRONMENT: development
+      AUTH_BYPASS_FOR_LOCAL: ${AUTH_BYPASS_FOR_LOCAL:-true}
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL in .env}
+      SESSION_SECRET_KEY: ${SESSION_SECRET_KEY:-compose-local-session-secret-change-before-production}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost:8001}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,0.0.0.0}
+    volumes:
+      - ./lti_app:/app/lti_app
+    command: >
+      uvicorn lti_app.main:app
+      --host 0.0.0.0
+      --port 8080
+      --reload
+      --proxy-headers
+      --forwarded-allow-ips '*'
+
+volumes:
+  pgdata:

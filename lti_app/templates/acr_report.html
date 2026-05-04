@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Conformance Report - {{ acr.course_name }}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f9fafb;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 3rem;
+        }
+        header {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #111827;
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            color: #374151;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        h3 {
+            color: #4b5563;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .subtitle {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .meta-item {
+            padding: 0.75rem;
+            background: #f3f4f6;
+            border-radius: 6px;
+        }
+        .meta-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+        .meta-value {
+            font-size: 0.875rem;
+            color: #1f2937;
+            font-weight: 500;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .bg-green-100 { background: #d1fae5; }
+        .text-green-800 { color: #065f46; }
+        .bg-yellow-100 { background: #fef3c7; }
+        .text-yellow-800 { color: #92400e; }
+        .bg-red-100 { background: #fee2e2; }
+        .text-red-800 { color: #991b1b; }
+        .bg-gray-100 { background: #f3f4f6; }
+        .text-gray-800 { color: #1f2937; }
+        .bg-blue-100 { background: #dbeafe; }
+        .text-blue-800 { color: #1e40af; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #10b981;
+            transition: width 0.3s ease;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .comparison-table th {
+            background: #f9fafb;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #374151;
+        }
+        .comparison-table td {
+            font-size: 0.875rem;
+        }
+        .criteria-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+        .criteria-table th,
+        .criteria-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .criteria-table th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .criteria-table tr:hover {
+            background: #f9fafb;
+        }
+        .criterion-id {
+            font-family: monospace;
+            font-weight: 600;
+            color: #6b7280;
+        }
+        .level-badge {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .level-a { background: #dbeafe; color: #1e40af; }
+        .level-aa { background: #c7d2fe; color: #3730a3; }
+        .remarks {
+            color: #4b5563;
+            font-size: 0.875rem;
+            max-width: 400px;
+        }
+        .evidence-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .evidence-item {
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        .evidence-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .evidence-title {
+            font-weight: 600;
+            color: #111827;
+        }
+        .evidence-url {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .finding {
+            padding: 0.5rem;
+            background: #fef2f2;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+        .finding-severity {
+            display: inline-block;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .severity-error { background: #fee2e2; color: #991b1b; }
+        .severity-warning { background: #fef3c7; color: #92400e; }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+        }
+        .category-header {
+            background: #f3f4f6;
+            padding: 0.75rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 1rem;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Accessibility Conformance Report</h1>
+            <p class="subtitle">{{ acr.vpat_edition }} | WCAG {{ acr.wcag_version }} Level {{ acr.conformance_level }}</p>
+        </header>
+
+        <section>
+            <h2>Course Information</h2>
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <div class="meta-label">Course Name</div>
+                    <div class="meta-value">{{ acr.course_name }}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Course URL</div>
+                    <div class="meta-value">{{ acr.course_url }}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Evaluator</div>
+                    <div class="meta-value">{{ acr.evaluator }}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Generated</div>
+                    <div class="meta-value">{{ acr.generated_at.strftime('%Y-%m-%d %H:%M:%S') }}</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Overall Conformance Status</h2>
+            <div style="display: flex; align-items: center; gap: 1rem; margin: 1rem 0;">
+                <span class="badge {{ acr.overall_status | conformance_badge }}">
+                    {{ acr.overall_status | conformance_icon }} {{ acr.overall_status.value }}
+                </span>
+                <span style="font-size: 1.25rem; font-weight: 600; color: #111827;">
+                    {{ "%.1f" | format(acr.conformance_percentage) }}% Conformance
+                </span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ acr.conformance_percentage }}%;"></div>
+            </div>
+        </section>
+
+        {% if acr.issues_before > 0 %}
+        <section>
+            <h2>Remediation Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">{{ acr.issues_before }}</div>
+                    <div class="stat-label">Issues Before</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ acr.issues_after }}</div>
+                    <div class="stat-label">Issues After</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #10b981;">{{ acr.issues_fixed }}</div>
+                    <div class="stat-label">Issues Fixed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ acr.pages_remediated }}</div>
+                    <div class="stat-label">Pages Remediated</div>
+                </div>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Before Remediation</th>
+                        <th>After Remediation</th>
+                        <th>Improvement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Issues</td>
+                        <td>{{ acr.issues_before }}</td>
+                        <td>{{ acr.issues_after }}</td>
+                        <td style="color: #10b981; font-weight: 600;">
+                            {{ "%.1f" | format((acr.issues_fixed / acr.issues_before * 100) if acr.issues_before > 0 else 0) }}%
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        {% endif %}
+
+        <section>
+            <h2>WCAG Conformance Summary</h2>
+
+            <h3>Level A Criteria ({{ stats.level_a_total }} total)</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #10b981;">{{ stats.level_a_supports }}</div>
+                    <div class="stat-label">Supports</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #f59e0b;">{{ stats.level_a_partial }}</div>
+                    <div class="stat-label">Partially Supports</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #ef4444;">{{ stats.level_a_fails }}</div>
+                    <div class="stat-label">Does Not Support</div>
+                </div>
+            </div>
+
+            <h3>Level AA Criteria ({{ stats.level_aa_total }} total)</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #10b981;">{{ stats.level_aa_supports }}</div>
+                    <div class="stat-label">Supports</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #f59e0b;">{{ stats.level_aa_partial }}</div>
+                    <div class="stat-label">Partially Supports</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #ef4444;">{{ stats.level_aa_fails }}</div>
+                    <div class="stat-label">Does Not Support</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Detailed Criteria Assessment</h2>
+
+            {% for category_id, criteria in criteria_by_category.items() %}
+            <div class="category-header">
+                Principle {{ category_id }}
+            </div>
+            <table class="criteria-table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Level</th>
+                        <th>Status</th>
+                        <th>Issues</th>
+                        <th>Pages Affected</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for criterion in criteria %}
+                    <tr>
+                        <td>
+                            <span class="criterion-id">{{ criterion.criterion_id }}</span>
+                            <div style="font-weight: 500; margin-top: 0.25rem;">{{ criterion.name }}</div>
+                            <div class="remarks">{{ criterion.remarks }}</div>
+                        </td>
+                        <td>
+                            <span class="level-badge level-{{ criterion.level | lower }}">{{ criterion.level }}</span>
+                        </td>
+                        <td>
+                            <span class="badge {{ criterion.conformance | conformance_badge }}">
+                                {{ criterion.conformance | conformance_icon }} {{ criterion.conformance.value }}
+                            </span>
+                        </td>
+                        <td>{{ criterion.issue_count }}</td>
+                        <td>{{ criterion.pages_affected }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </section>
+
+        {% if include_evidence and evidence %}
+        <section class="evidence-section">
+            <h2>Artifact Evidence</h2>
+            <p style="color: #6b7280; margin-bottom: 1rem;">
+                Detailed findings for individual content items. Showing {{ evidence | length }} artifacts.
+            </p>
+
+            {% for item in evidence %}
+            <div class="evidence-item">
+                <div class="evidence-header">
+                    <div>
+                        <div class="evidence-title">{{ item.title }}</div>
+                        <div class="evidence-url">{{ item.canvas_url }}</div>
+                    </div>
+                    <span class="badge {{ item.remediation_status | conformance_badge }}">
+                        {{ item.remediation_status.value }}
+                    </span>
+                </div>
+                {% for finding in item.findings %}
+                <div class="finding">
+                    <span class="finding-severity severity-{{ finding.severity }}">{{ finding.severity.upper() }}</span>
+                    <strong>{{ finding.rule_id }}</strong> ({{ finding.wcag_criterion }})
+                    <div style="margin-top: 0.25rem; color: #4b5563;">{{ finding.message }}</div>
+                    {% if finding.remediation_applied %}
+                    <div style="margin-top: 0.5rem; padding: 0.5rem; background: #d1fae5; border-radius: 4px; font-size: 0.875rem;">
+                        <strong>Auto-remediated:</strong> {{ finding.remediation_notes }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        <footer class="footer">
+            <p>Report generated by Remedy Canvas LTI on {{ generated_at }}</p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem;">
+                This Accessibility Conformance Report is based on automated WCAG 2.2 Level AA testing.
+                Manual testing may reveal additional accessibility considerations.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

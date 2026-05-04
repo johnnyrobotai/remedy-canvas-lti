@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* LACCD District default */
+  --color-brand-primary: #003D66;
+  --color-brand-secondary: #005A97;
+
+  /* LACCD Campus colors (light-mode values) */
+  --color-elac-primary: #01573D;
+  --color-elac-secondary: #FDB040;
+  --color-lacc-primary: #C13D40;
+  --color-lacc-secondary: #305589;
+  --color-lahc-primary: #FCAC4F;
+  --color-lahc-secondary: #001A72;
+  --color-lamc-primary: #00205C;
+  --color-lamc-secondary: #979797;
+  --color-lapc-primary: #090909;
+  --color-lapc-secondary: #EE3125;
+  --color-lasc-primary: #002856;
+  --color-lasc-secondary: #FCC60E;
+  --color-lattc-primary: #572E82;
+  --color-lattc-secondary: #FBB517;
+  --color-lavc-primary: #20680C;
+  --color-lavc-secondary: #FCB926;
+  --color-wlac-primary: #003882;
+  --color-wlac-secondary: #FCC917;
+
+  /* Semantic surface/text tokens — light-mode defaults */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f9fafb;
+  --color-surface-raised: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-muted: #f3f4f6;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-text-subtle: #9ca3af;
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Sidebar */
+  --sidebar-width: 220px;
+  --sidebar-collapsed-width: 64px;
+}
+
+/* Dark-mode overrides. The class-based variant above keys on `.dark` on <html>. */
+.dark {
+  --color-surface: #0b1220;
+  --color-surface-muted: #111827;
+  --color-surface-raised: #1f2937;
+  --color-border: #1f2937;
+  --color-border-muted: #111827;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-text-subtle: #6b7280;
+
+  /* Campus colors — lightness-shifted for >=4.5:1 contrast on dark surfaces */
+  --color-brand-primary: #5aa7d6;
+  --color-brand-secondary: #7fbde0;
+  --color-elac-primary: #3fb88a;
+  --color-elac-secondary: #ffc66a;
+  --color-lacc-primary: #e57a7c;
+  --color-lacc-secondary: #7c98c7;
+  --color-lahc-primary: #ffc987;
+  --color-lahc-secondary: #6a85d6;
+  --color-lamc-primary: #6b8dd1;
+  --color-lamc-secondary: #c4c4c4;
+  --color-lapc-primary: #d4d4d4;
+  --color-lapc-secondary: #ff6b63;
+  --color-lasc-primary: #6692cc;
+  --color-lasc-secondary: #ffdd5a;
+  --color-lattc-primary: #a07dc7;
+  --color-lattc-secondary: #ffd16b;
+  --color-lavc-primary: #66c24f;
+  --color-lavc-secondary: #ffd26b;
+  --color-wlac-primary: #6a8fd6;
+  --color-wlac-secondary: #ffe060;
+}
+
+/* Canvas iframe resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100%;
+  background-color: var(--color-surface-muted);
+  color: var(--color-text);
+}
