@@ -98,3 +98,7 @@ empty key set and Canvas launches will fail validation.
 See [docs/production-deployment.md](docs/production-deployment.md) for the
 full deployment checklist, Canvas Developer Key URLs, and post-deploy
 verification.
+
+## License
+
+MIT. See `LICENSE`.
